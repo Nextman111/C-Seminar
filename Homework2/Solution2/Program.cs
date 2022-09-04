@@ -10,7 +10,7 @@ string number = Console.ReadLine();
 
 if (int.TryParse(number, out var input)){
         if (number.Length > 2){
-            Console.WriteLine($"Вы ввели значение {input} . третья цифра равна {input/100%10}");
+            Console.WriteLine($"Вы ввели значение {input} . третья цифра равна {(int)(input%Math.Pow(10,number.Length-2) / Math.Pow(10,number.Length-3))}");
         }
         else{
             Console.WriteLine($"Третьей цифры в числе {input} нет.");
