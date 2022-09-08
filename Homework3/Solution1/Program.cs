@@ -8,8 +8,7 @@
 //функция проверки на палиндром (не обязательно пятизначного числа)
 string Palindrom(string number){
     string pal = "палиндром";
-    for (int i = 0 , j = number.Length-1; i != j ; i++, j-- ){
-        Console.WriteLine($"{number[i]}   {number[j]}");
+    for (int i = 0 , j = number.Length-1; i < j ; i++, j-- ){
         if (number[i] != number[j]){
             pal = "не палиндром";
             break;
