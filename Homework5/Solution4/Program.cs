@@ -3,17 +3,17 @@
 // [3 7 22 2 78] -> 76
 
 //генератор массива
-int[] ArrayGenerator(int size){
-    int[] array = new int[size];
+double[] ArrayGenerator(int size){
+    double[] array = new double[size];
     Random rand = new Random();
     for (int i = 0; i < array.Length; i++){
-        array[i] = rand.Next(1,100);
+        array[i] = rand.NextDouble()*rand.Next(-1000,1000);
     }
     return array;
 }
 
 //печать массива в консоль
-void ArrayConsolePrint(int[] array){
+void ArrayConsolePrint(double[] array){
     Console.WriteLine("-------------------------------------------");
     Console.WriteLine("Сгенерированный массив:");
     for (int i = 0; i < array.Length; i++){
@@ -25,13 +25,14 @@ void ArrayConsolePrint(int[] array){
 //finde Min/Max in array
 // Min = minMax[0]
 // Max = minMax[1]
-int[] FindeMinMaxInArray(int[] array){
+int[] FindeMinMaxInArray(double[] array){
     int[] minMax = new int[2];
     minMax[0] = minMax[1] = 0;
     for(int i = 0; i < array.Length; i++){
         if(array[minMax[0]] > array[i]){
             minMax[0] = i;
-        }else if(array[minMax[0]]<array[i]){
+        }
+        if(array[minMax[1]]<array[i]){
             minMax[1] = i;
         } 
     }
@@ -39,13 +40,13 @@ int[] FindeMinMaxInArray(int[] array){
 }
 
 Console.WriteLine("Введите размер массива натуральное число.\n"
-                +"Программа сгенерирует массив из натуральных чисел от 1 до 99.\n"
+                +"Программа сгенерирует массив из вещественных чисел.\n"
                 +"Найдет минимальное и максимальное значение.\n"+
                 "Выведет разницу между минимальным и максимальным значением.");int size;
 while (int.TryParse(Console.ReadLine(), out size) == false || size < 1){
     Console.WriteLine("Некорректное значение, введите натуральное число");
 }
-int[] array = ArrayGenerator(size);
+double[] array = ArrayGenerator(size);
 ArrayConsolePrint(array);
 
 if(array.Length < 2){
