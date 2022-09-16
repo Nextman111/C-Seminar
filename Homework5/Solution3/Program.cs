@@ -26,8 +26,14 @@ void ArrayConsolePrint(int[] array){
 
 //Метод расчета произведения
 int[] MultiplicationPairOfArrayElements(int[] array){ 
-    int[] multiplication = new int[array.Length/2];
-    for(int i = 0, j = array.Length-1; i<j; i++,j--){
+    int size;
+    if (array.Length % 2 == 0 )
+        size = array.Length/2;
+    else
+        size = array.Length/2 +1;
+    
+    int[] multiplication = new int[size];
+    for(int i = 0, j = array.Length-1; i<j+1; i++,j--){
         multiplication[i] = array[i] * array[j];
     }
     return multiplication;
@@ -35,11 +41,7 @@ int[] MultiplicationPairOfArrayElements(int[] array){
 
 //Вывод произведения
 void PrintMultiplicationPairOfArrayElements(int[] array, int[] multiplication){
-    if( multiplication.Length < 1){
-        Console.WriteLine("К сожалению в массиве только один элемент и у него нет пары.\n"
-                        +$"Тогда посчитаем для него квавдрат {array[0]}^2 = {Math.Pow(array[0],2)}");
-    }
-    for(int i = 0, j = array.Length-1; i<j; i++,j--){
+    for(int i = 0, j = array.Length-1; i<j+1; i++,j--){
         Console.WriteLine($"{i+1}. Элементы [{i}] и [{j}]   {array[i]} * {array[j]} = {multiplication[i]}");
     }
 }
